@@ -5,12 +5,9 @@ class Cans < Formula
   head "https://github.com/veronica-agent/cans.git", branch: "main"
 
   depends_on "go" => :build
-  depends_on "uv"
+  depends_on arch: :arm64
   depends_on :macos
-
-  on_intel do
-    odie "cans is Apple Silicon only"
-  end
+  depends_on "uv"
 
   def install
     ldflags = "-s -w -X github.com/veronica-agent/cans/internal/ship.Version=#{version}"
